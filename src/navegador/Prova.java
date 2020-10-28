@@ -1,5 +1,6 @@
 package navegador;
 
+import java.awt.print.PrinterIOException;
 import java.util.Scanner;
 
 public class Prova {
@@ -7,10 +8,7 @@ public class Prova {
     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String web1 = "https://twitter.com/home";
-        String web2 = "https://www.youtube.com/";
-        String web3 = "https://www.twitch.tv/";
-        String web4 = "https://www.goodreads.com/";
+        String web1 = "https://www.google.com/";
 
         Navegador navegador = new Navegador(web1);
         Prova program = new Prova();
@@ -18,11 +16,12 @@ public class Prova {
 
     }
 
+
     public void menu(Navegador navegador) {
         int opcio = 0;
-        do {
-            try {
-                System.out.println("NAVEGADOR\nWeb Actual: " + navegador.getPilaEndavant().peek() + "\n1. Anar a: \n2. Anar enrere: \n3. Anar endavant\n4. Mostrar historial\n5. Sortir");
+        boolean programOn = true;
+            do {
+                    System.out.println("NAVEGADOR\nWeb Actual: " + navegador.mostrarWeb() + "\n1. Anar a: \n2. Anar enrere: \n3. Anar endavant\n4. Mostrar historial\n5. Sortir");
                 opcio = scanner.nextInt();
                 switch (opcio) {
                     case 1:
@@ -41,24 +40,13 @@ public class Prova {
                         break;
                     case 5:
                         System.out.println("Tancant el navegador...");
+                        programOn = false;
                         break;
                     default:
                         System.out.println("No es una opció válida, torna a provar: ");
                         opcio = scanner.nextInt();
+                        break;
                 }
-            } catch (PilaBuidaException ex) {
-                ex.printStackTrace();
-            }
-
-        } while (opcio != 5);
-
-    }
-
-    public void mostrarWeb(Navegador navegador) {
-        try {
-            System.out.println("Web actual: " + navegador.getPilaEndavant().peek());
-        } catch (PilaBuidaException ex) {
-            ex.printStackTrace();
-        }
+            } while (programOn);
     }
 }
