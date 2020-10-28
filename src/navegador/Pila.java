@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Pila<E> implements Iterable<E> {
 
-    private ArrayDeque<E> pila;
+    private ArrayDeque<E> pila = new ArrayDeque<>();
 
     public boolean empty() {
         return pila.isEmpty();
@@ -32,7 +32,14 @@ public class Pila<E> implements Iterable<E> {
     }
 
     public void removeAllElements() {
-        pila.remove();
+        pila.clear();
+    }
+
+    @Override
+    public String toString() {
+        return "Pila{" +
+                "pila=" + pila +
+                '}';
     }
 
     @Override
