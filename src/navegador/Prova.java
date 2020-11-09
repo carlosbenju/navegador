@@ -1,6 +1,5 @@
 package navegador;
 
-import java.awt.print.PrinterIOException;
 import java.util.Scanner;
 
 public class Prova {
@@ -21,7 +20,7 @@ public class Prova {
         int opcio = 0;
         boolean programOn = true;
             do {
-                    System.out.println("NAVEGADOR\nWeb Actual: " + navegador.mostrarWeb() + "\n1. Anar a: \n2. Anar enrere: \n3. Anar endavant\n4. Mostrar historial\n5. Sortir");
+                    System.out.println("NAVEGADOR\nWeb Actual: " + navegador.mostrarWeb() + "\n1. Anar a: \n2. Anar enrere: \n3. Anar endavant:\n4. Mostrar historial:\n5. Sortir");
                 opcio = scanner.nextInt();
                 switch (opcio) {
                     case 1:
@@ -36,11 +35,15 @@ public class Prova {
                         navegador.endavant();
                         break;
                     case 4:
+                        System.out.println("---HISTORIAL---");
                         navegador.veureHistorial();
                         break;
                     case 5:
                         System.out.println("Tancant el navegador...");
                         programOn = false;
+                        break;
+                    case 6:
+                        navegador.veureVisitades();
                         break;
                     default:
                         System.out.println("No es una opció válida, torna a provar: ");
