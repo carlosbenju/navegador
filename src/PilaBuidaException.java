@@ -1,5 +1,5 @@
 /**
- * Llença una excepció quan la pila està buida.
+ * Lanza una expeción en caso de que la pila esté vacía.
  */
 public class PilaBuidaException extends Exception {
 }

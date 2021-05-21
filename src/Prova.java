@@ -19,20 +19,25 @@ public class Prova {
     }
 
     /**
-     * Mostra un menú amb les opcións del navegador
-     * @param navegador Rep un objecte navegador per utilitzar els metodes.
+     * Muestra un menú con las opciones del navegador.
+     * @param navegador Recibe un objeto de la clase navegador para utilizar sus métodos.
      */
     public void menu(Navegador navegador) {
-        int opcio = 0;
+        int opcio;
         boolean programOn = true;
             do {
-                    System.out.println("NAVEGADOR\nWeb Actual: " + navegador.mostrarWeb() + "\n1. Anar a: \n2. Anar enrere: \n3. Anar endavant:\n4. Mostrar historial:\n5. Sortir");
+                    System.out.println("NAVEGADOR\nWeb Actual: " + navegador.mostrarWeb() + "\n1. Ir a: \n2. Web anterior: \n3. Web siguiente:\n4. Mostrar historial:\n5. Salir");
                 opcio = scanner.nextInt();
                 switch (opcio) {
                     case 1:
-                        System.out.println("Introdueix la web a la que vols anar: ");
+                        System.out.println("Introduce la URL de la web a la que quieres ir: ");
                         String web = scanner.next();
-                        navegador.anarA(web);
+                        String regex = "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+                        if (web.matches(regex)) {
+                            navegador.anarA(web);
+                        } else {
+                            System.out.println("No es una URL válida.");
+                        }
                         break;
                     case 2:
                         navegador.enrere();
@@ -45,14 +50,11 @@ public class Prova {
                         navegador.veureHistorial();
                         break;
                     case 5:
-                        System.out.println("Tancant el navegador...");
+                        System.out.println("Cerrando el navegador...");
                         programOn = false;
                         break;
-                    case 6:
-                        navegador.veureVisitades();
-                        break;
                     default:
-                        System.out.println("No es una opció válida, torna a provar: ");
+                        System.out.println("No es una opción válida, vuelve a probar: ");
                         opcio = scanner.nextInt();
                         break;
                 }
